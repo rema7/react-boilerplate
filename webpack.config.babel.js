@@ -11,7 +11,7 @@ import StyleLintPlugin from 'stylelint-webpack-plugin'
 import WebpackBuildNotifierPlugin from 'webpack-build-notifier'
 
 const repoRoot = __dirname
-const appRoot = path.join(repoRoot, 'examples')
+const appRoot = path.join(repoRoot, 'app')
 const distRoot = path.join(repoRoot, 'dist')
 const publicRoot = path.join(repoRoot, 'public')
 
@@ -50,10 +50,10 @@ export default (env = {}) => {
         ]
     } else {
         plugins = [...plugins,
-            // new StyleLintPlugin({
-            //     files: '**/*.scss',
-            //     syntax: 'scss',
-            // }),
+            new StyleLintPlugin({
+                files: '**/*.scss',
+                syntax: 'scss',
+            }),
             new ProgressBarPlugin(),
         ]
     }
